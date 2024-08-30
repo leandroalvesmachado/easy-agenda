@@ -1,9 +1,10 @@
 class Event < ApplicationRecord
+  enum status: { active: "active", removed: "removed" }
+
   belongs_to :category, class_name: "Category", foreign_key: "category_id"
 
   # se o relacionamento fosse opcional, pode ser nulo
   # belongs_to :category, optional: true, class_name: "Category", foreign_key: "category_id"
-
 
   validates :name, presence: true
   validates :name, length: {  minimum: 3, maximum: 100, allow_blank: true } # allow_blank: true só aplica quando o campo não for vazio
@@ -14,6 +15,15 @@ class Event < ApplicationRecord
   # "on" serve para informar em qual método aplicar a validação, no caso no create
   validate :validate_if_start_in_future, on: :create
   validate :validate_if_finished_greater_than_started
+
+  # retornar o evento já com a category do relacionamento
+  scope :with_category, -> { includes(:category) }
+
+  # retorna todos os eventos do dia atual
+  scope :today, -> { where("started_at >= ? AND started_at <= ?", Date.current.beginning_of_day, Date.current.end_of_day) }
+
+  # com argumentos, para passar parâmetros
+  scope :in_period, ->(period_start, period_end) { where("started_at >= ? AND started_at <= ?") }
 
   private
 
