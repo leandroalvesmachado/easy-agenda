@@ -64,3 +64,6 @@ group :development do
   # gem "spring"
 end
 
+# Views and Controllers
+gem 'simple_form', '~> 5.3', '>= 5.3.1'
+
