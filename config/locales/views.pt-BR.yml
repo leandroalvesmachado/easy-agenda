@@ -1,0 +1,6 @@
+pt-BR:
+  views:
+    events:
+      form:
+        new: Novo Evento
+        edit: Editar Evento

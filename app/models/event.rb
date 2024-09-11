@@ -25,6 +25,9 @@ class Event < ApplicationRecord
   # com argumentos, para passar parâmetros
   scope :in_period, ->(period_start, period_end) { where("started_at >= ? AND started_at <= ?") }
 
+  has_one_attached :file
+  has_rich_text :description
+
   private
 
   def validate_if_finished_greater_than_started

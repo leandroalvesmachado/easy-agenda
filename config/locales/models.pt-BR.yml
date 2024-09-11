@@ -1,0 +1,29 @@
+pt-BR:
+  models:
+    models: &model_names
+      user: Usuário
+      category: Categoria
+      event: Evento
+    attributes: &model_attributes
+      user:
+        name: Nome
+      category:
+        identifier: Identificador
+        name: Nome
+      event:
+        name: Nome
+        description: Detalhes do Evento
+        category: Categoria
+        started_at: Início
+        finished_at: Fim
+        file: Anexo
+  activerecord:
+    models:
+      <<: *model_names
+    attributes:
+      <<: *model_attributes
+  activemodel:
+    models:
+      <<: *model_names
+    attributes:
+      <<: *model_attributes
