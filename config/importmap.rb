@@ -8,3 +8,10 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+# pin "@fullcalendar/core", to: "@fullcalendar--core.js" # @6.1.15
+pin "@fullcalendar/core", to: "https://cdn.skypack.dev/@fullcalendar/core@6.1.15"
+pin "preact" # @10.12.1
+pin "preact/compat", to: "preact--compat.js" # @10.12.1
+pin "preact/hooks", to: "preact--hooks.js" # @10.12.1
+# pin "@fullcalendar/daygrid", to: "@fullcalendar--daygrid.js" # @6.1.15
+pin "@fullcalendar/daygrid", to: "https://cdn.skypack.dev/@fullcalendar/daygrid@6.1.15"

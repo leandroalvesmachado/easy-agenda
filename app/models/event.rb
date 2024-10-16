@@ -25,7 +25,10 @@ class Event < ApplicationRecord
   # com argumentos, para passar parâmetros
   scope :in_period, ->(period_start, period_end) { where("started_at >= ? AND started_at <= ?") }
 
+  # active storage
   has_one_attached :file
+
+  # action text
   has_rich_text :description
 
   private
@@ -50,7 +53,7 @@ class Event < ApplicationRecord
     return unless started_at
     return if started_at >= Time.now
 
-    # adicionaod mensagem de erro ao campo
+    # adicionando mensagem de erro ao campo
     errors.add(:started_at, :invalid)
   end
 end
